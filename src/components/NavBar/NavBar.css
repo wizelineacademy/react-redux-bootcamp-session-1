@@ -1,0 +1,11 @@
+.c-nav-bar {
+  display: flex;
+  flex-direction: row !important;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 40px;
+}
+
+.c-nav-bar__profile {
+  margin-left: auto;
+}

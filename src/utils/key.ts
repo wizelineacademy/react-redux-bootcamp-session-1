@@ -1,0 +1,2 @@
+// YOU OWN API KEY
+export const API_KEY = 'YOUR_OWN_API_KEY'
