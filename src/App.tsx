@@ -1,16 +1,14 @@
 import React, { FunctionComponent, useState } from 'react';
 import Categories from './components/Categories';
-import FeaturedBanner from './components/FeaturedBanner/FeaturedBanner';
+import FeaturedBanner from './components/FeaturedBanner/Container';
 import NavBar from './components/NavBar/NavBar';
 import Toast from './components/Toast';
 import VideoPlayerModal from './components/VideoPlayerModal';
-import PromotedMovieFetcher from './components/PromotedMovieFetcher';
+import PromotedMovieFetcher from './components/PromotedMovieFetcher/Container';
 import CategoriesFetcher from './components/CategoriesFetcher';
 import {
   CategoriesFetcherHandler,
   Category,
-  Movie,
-  PromotedMovieHandler,
   ShowToastHandler,
   TrailerIdHandler,
   VideoPlayerHandler
@@ -18,7 +16,6 @@ import {
 import './App.css';
 
 const App: FunctionComponent = () => {
-  const [bannerMovie, setBannerMovie] = useState<Movie | undefined>(undefined);
   const [categories, setCategories] = useState<Category[]>([]);
   const [showToast, setShowToast] = useState<boolean>(false);
   const [trailerId, setTrailerId] = useState<string>('');
@@ -40,10 +37,6 @@ const App: FunctionComponent = () => {
     setTrailerId(trailerId);
   };
 
-  const handlePromotedMovie: PromotedMovieHandler = (movie) => {
-    setBannerMovie(movie);
-  };
-
   const handleCategories: CategoriesFetcherHandler = (categories) => {
     setCategories(categories)
   };
@@ -51,9 +44,8 @@ const App: FunctionComponent = () => {
   return (
     <div className="App">
       <NavBar />
-      <PromotedMovieFetcher handlePromotedMovie={handlePromotedMovie} />
+      <PromotedMovieFetcher />
       <FeaturedBanner
-        movie={bannerMovie}
         setShowToastHandler={handleOpenToastHandler}
         setOpenVideoPlayer={handleOpenVideoPlayer}
         setTrailerIdHandler={handleTrailerId}
